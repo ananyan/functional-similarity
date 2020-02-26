@@ -1,0 +1,13 @@
+01_raw
+energy_harvesters_tensor - original data
+
+02_intermediate - generated from DataProcessing.py
+energy_harvesters_functionsandflows - product-function matrix with functions and flows separated
+(data format of Weaver 2011 Exploring Innovations Opportunities in Energy Harvesting)
+energy_harvesters_vector - flattened product-function matrix 
+(vector form for all vector space measures - Jaccard, Cosine etc.)
+
+03_processed - generated from NetworkDistances.py
+energy_harvesters_deltacon - DeltaCon Distance for all devices
+energy_harvesters_geddistance - Graph Edit Distance for all devices
+energy_harvesters_lambdadistance - Laplacian Spectral Distance (norm p=2) matrix for all devices

@@ -6,11 +6,13 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import seaborn as sns
 
+##Load vector form of data
 data = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_vector.csv',index_col=0, header=2) #Load just numerical information
 hammingdist = pd.DataFrame(squareform(pdist(data, metric='hamming')), columns = data.index, index = data.index)
 jaccarddist = pd.DataFrame(squareform(pdist(data, metric='jaccard')), columns = data.index, index = data.index)
 cosinedist = pd.DataFrame(squareform(pdist(data, metric='cosine')), columns = data.index, index = data.index)
 
+##Try a MDS visualization
 mds = MDS(n_components = 2, dissimilarity='precomputed', random_state=6)
 results = mds.fit(hammingdist)
 coords = results.embedding_
