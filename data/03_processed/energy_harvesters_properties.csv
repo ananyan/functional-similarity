@@ -1,0 +1,40 @@
+,max_deg_centrality,avg_deg_centrality,max_degree,max_deg_nodes,complexity
+Perpetuum FSH/C,0.25,0.08108108108108109,9.0,"EE,Solid,light E,mag E,status,vib ME",54.0
+Enocean Eco 100,0.3055555555555555,0.11561561561561559,11.0,"EE,Human,Solid,light E,mag E,status,trans ME",77.0
+Clarkson U prototype,0.3611111111111111,0.1366366366366366,13.0,"EE,Solid,control,light E,mag E,status,vib ME",91.0
+Michigan U PFIG,0.3611111111111111,0.11711711711711711,13.0,"EE,Solid,light E,mag E,status,vib ME",78.0
+U Texas prototype Induc Vib,0.41666666666666663,0.15765765765765768,15.0,"EE,Solid,control,light E,mag E,status,vib ME",105.0
+Seiko Kinetic watch,0.4444444444444444,0.21621621621621623,16.0,"EE,Human,Human E,control,light E,mag E,rot ME,status,trans ME",144.0
+AA battery harvester,0.41666666666666663,0.20270270270270274,15.0,"EE,Human,Human E,Solid,control,light E,mag E,status,vib ME",135.0
+Socket,0.3333333333333333,0.14414414414414412,12.0,"EE,Human,Human E,Solid,light E,mag E,status,trans ME",96.0
+Kinetic flashlight,0.41666666666666663,0.18018018018018023,15.0,"EE,Human,Human E,control,light E,mag E,status,trans ME",120.0
+MIDE Voiture,0.3333333333333333,0.10810810810810811,12.0,"EE,Solid,control,light E,status,vib ME",72.0
+Bistable buckling harvester,0.2777777777777778,0.07507507507507506,10.0,"EE,Solid,light E,status,vib ME",50.0
+Heel-impact shoe harvester,0.41666666666666663,0.1576576576576577,15.0,"EE,Human,Human E,Solid,light E,status,trans ME",105.0
+Innowattech road/rail,0.3333333333333333,0.05405405405405404,12.0,"EE,Solid,vib ME",36.0
+Piezo backpack straps,0.3333333333333333,0.09009009009009009,12.0,"EE,Human,Human E,light E,status",60.0
+U Texas prototype Piezo Vib,0.4722222222222222,0.17867867867867873,17.0,"EE,Solid,control,light E,mag E,status,vib ME",119.0
+WindTamer,0.3611111111111111,0.1951951951951951,13.0,"EE,Gas,Solid,control,light E,mag E,pneu E,rot ME,status,trans ME",130.0
+Leviathan,0.3333333333333333,0.16216216216216212,12.0,"EE,Gas,Solid,control,light E,mag E,pneu E,rot ME,status",108.0
+Enviro Engergies,0.3611111111111111,0.17567567567567563,13.0,"EE,Gas,Solid,light E,mag E,pneu E,rot ME,status,trans ME",117.0
+Four Seasons,0.3611111111111111,0.15615615615615613,13.0,"EE,Gas,Solid,light E,mag E,pneu E,rot ME,status",104.0
+Humdinger Wind Belt,0.25,0.10810810810810811,9.0,"EE,Gas,Solid,light E,mag E,pneu E,status,vib ME",72.0
+Michigan U piezo flag,0.2777777777777778,0.12012012012012012,10.0,"EE,Gas,Solid,control,light E,pneu E,status,vib ME",80.0
+Nova Energy tuna turbine,0.3611111111111111,0.1951951951951951,13.0,"EE,Liquid,Solid,hyd E,light E,mag E,rot ME,status,therm E,trans ME",130.0
+Columbia Power Manta buoy,0.3055555555555555,0.11561561561561559,11.0,"EE,Liquid,hyd E,light E,mag E,status,trans ME",77.0
+Wing Wave Generator,0.2777777777777778,0.12012012012012012,10.0,"EE,Liquid,Solid,hyd E,light E,mag E,rot ME,status",80.0
+Solar heat engine w/ mirrors,0.4444444444444444,0.1681681681681682,16.0,"EE,Solid,control,light E,rot ME,status,therm E",112.0
+Tracking system,0.5,0.18918918918918923,18.0,"EE,Solid,control,light E,rot ME,status,therm E",126.0
+Inflatable mat,0.38888888888888884,0.18918918918918923,14.0,"EE,Gas,Solid,control,light E,pneu E,status,therm E,trans ME",126.0
+Big Belly trash compactor,0.5277777777777778,0.28528528528528535,19.0,"EE,Human,Human E,Solid,control,light E,rot ME,status,therm E,trans ME",190.0
+Transparent film on window,0.2222222222222222,0.07207207207207209,8.0,"EE,Solid,light E,status,therm E,trans ME",48.0
+Seiko Solar watch,0.4444444444444444,0.19219219219219225,16.0,"EE,Human,Human E,control,light E,status,therm E,trans ME",128.0
+Seiko Thermic watch,0.4722222222222222,0.25525525525525516,17.0,"EE,Gas,Human,Human E,control,light E,pneu E,status,therm E,trans ME",170.0
+Enocean ECT 310 Perpetuum,0.38888888888888884,0.1471471471471472,14.0,"EE,Gas,Solid,light E,pneu E,status,therm E",98.0
+Micropelt TE-power probe,0.3055555555555555,0.14864864864864863,11.0,"EE,Gas,Liquid,Solid,hyd E,light E,pneu E,status,therm E",99.0
+Micropelt TE-power ring,0.3055555555555555,0.13213213213213212,11.0,"EE,Gas,Solid,light E,pneu E,rot ME,status,therm E",88.0
+Micropelt STM-PEM,0.3055555555555555,0.11561561561561559,11.0,"EE,Gas,Solid,light E,pneu E,status,therm E",77.0
+Solar powered Sterling engine,0.3055555555555555,0.1651651651651651,11.0,"EE,Gas,Solid,control,light E,mag E,pneu E,rot ME,status,therm E",110.0
+Solar/wind streetlamp,0.41666666666666663,0.22522522522522523,15.0,"EE,Gas,Solid,control,light E,mag E,pneu E,rot ME,status,therm E",150.0
+Kinesis wind/solar,0.4722222222222222,0.2807807807807806,17.0,"EE,Gas,Human,Human E,Solid,control,light E,mag E,pneu E,rot ME,status",187.0
+Hymini wind/solar/crank,0.5,0.3243243243243243,18.0,"EE,Gas,Human,Human E,Solid,control,light E,mag E,pneu E,rot ME,status,therm E",216.0

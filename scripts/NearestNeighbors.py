@@ -22,11 +22,11 @@ cosine_dist_full = pd.DataFrame(squareform(cosinedist), columns = data.index, in
 
 
 ##Load distance matrices for network measures (data/03_processed/energy_harvesters_{...}.csv)
-networkdata = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_lambdadistance.csv',index_col=0, header=0)
+networkdata = pd.read_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_lambdadistance_sorted.csv',index_col=0, header=0)
 networkdist = squareform(networkdata) #condensed form
-networkdata_ged = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_geddistance.csv',index_col=0, header=0)
+networkdata_ged = pd.read_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_geddistance_sorted.csv',index_col=0, header=0)
 networkdist_ged = squareform(networkdata_ged)
-networkdata_deltacon = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_deltacon.csv',index_col=0, header=0)
+networkdata_deltacon = pd.read_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_deltacon_sorted.csv',index_col=0, header=0)
 networkdist_deltacon = squareform(networkdata_deltacon)
 
 ##Range normalize and turn to a measure of similarity (instead of distance)
@@ -52,20 +52,20 @@ def kNNlist(normsim1, normsim2):
 def kNNlistfar(normsim1, normsim2):
     percentoverlap = []
     for systemname in data.index:
-        k=6 
+        k=5 
         x = normsim1.nsmallest(k, systemname)[[systemname]].index
         y = normsim2.nsmallest(k, systemname)[[systemname]].index
-        overlap = len(set(list(x)).intersection(list(y)))-1 #Overlap in the most similar items (not a percent). Excludes itself.
+        overlap = len(set(list(x)).intersection(list(y))) #Overlap in the most similar items (not a percent). Excludes itself.
         percentoverlap.append(overlap)
     return percentoverlap
 
 ##Look at any device and examine most/least similar devices (use nlargest for most similar systems and nsmallest for least similar systems)
-sysname = 'Enviro Engergies'
-print(jaccard_dist_full_norm.nlargest(38, sysname)[[sysname]])
-print(hamming_dist_full_norm.nlargest(38, sysname)[[sysname]])
-print(cosine_dist_full_norm.nlargest(38, sysname)[[sysname]])
+sysname = 'Wing Wave Generator'
+#print(jaccard_dist_full_norm.nlargest(38, sysname)[[sysname]])
+#print(hamming_dist_full_norm.nlargest(38, sysname)[[sysname]])
+#print(cosine_dist_full_norm.nlargest(38, sysname)[[sysname]])
 print(ged_norm.nlargest(38, sysname)[[sysname]])
-print(lambdadist_norm.nlargest(38, sysname)[[sysname]])
+#print(lambdadist_norm.nlargest(38, sysname)[[sysname]])
 print(deltacon_norm.nlargest(38, sysname)[[sysname]])
 
 ##Getting the overlaps of nearest and farthest devices as a pairwise comparison of different similarity measures
@@ -105,51 +105,51 @@ e15 = kNNlistfar(lambdadist_norm, deltacon_norm)
 sns.set_palette(sns.dark_palette((260, 75, 60), input="husl"))
 sns.set_context("paper")
 # Set up the matplotlib figure
-b = range(0,7,1)
+b = [0, 1, 2, 3, 4, 5, 6]
 f, axes = plt.subplots(5, 5, figsize=(7,7), sharex=True, sharey=True)
 width  = 7.5
 height = width / 1.618
 f.set_size_inches(width,height)
 sns.despine()
-sns.distplot(d2, kde=False, color="b", ax=axes[0, 0],bins=b)
-sns.distplot(e2, kde=False, color="r", ax=axes[0, 0],bins=b)
+sns.distplot(d2, kde=False, color="b", ax=axes[0, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e2, kde=False, color="r", ax=axes[0, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[0,0].set_ylabel('Jaccard')
-sns.distplot(d3, kde=False, color="b", ax=axes[1, 0],bins=b)
-sns.distplot(e3, kde=False, color="r", ax=axes[1, 0],bins=b)
+sns.distplot(d3, kde=False, color="b", ax=axes[1, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e3, kde=False, color="r", ax=axes[1, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[1,0].set_ylabel('Cosine')
-sns.distplot(d4, kde=False, color="b", ax=axes[2, 0],bins=b)
-sns.distplot(e4, kde=False, color="r", ax=axes[2, 0],bins=b)
+sns.distplot(d4, kde=False, color="b", ax=axes[2, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e4, kde=False, color="r", ax=axes[2, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[2,0].set_ylabel('GED')
-sns.distplot(d5, kde=False, color="b", ax=axes[3, 0], bins=b)
-sns.distplot(e5, kde=False, color="r", ax=axes[3, 0], bins=b)
+sns.distplot(d5, kde=False, color="b", ax=axes[3, 0], bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e5, kde=False, color="r", ax=axes[3, 0], bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[3,0].set_ylabel('Spectral')
-sns.distplot(d6, kde=False, color="b", ax=axes[4, 0],bins=b)
-sns.distplot(e6, kde=False, color="r", ax=axes[4, 0],bins=b)
+sns.distplot(d6, kde=False, color="b", ax=axes[4, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e6, kde=False, color="r", ax=axes[4, 0],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[4,0].set_ylabel('DeltaCon')
 axes[4,0].set_xlabel('SMC')
-sns.distplot(d7, kde=False, color="b", ax=axes[1, 1],bins=b)
-sns.distplot(e7, kde=False, color="r", ax=axes[1, 1],bins=b)
-sns.distplot(d8, kde=False, color="b", ax=axes[2, 1],bins=b)
-sns.distplot(e8, kde=False, color="r", ax=axes[2, 1],bins=b)
-sns.distplot(d1, kde=False, color="b", ax=axes[3, 1],bins=b)
-sns.distplot(e1, kde=False, color="r", ax=axes[3, 1],bins=b)
-sns.distplot(d9, kde=False, color="b", ax=axes[4, 1],bins=b)
-sns.distplot(e9, kde=False, color="r", ax=axes[4, 1],bins=b)
+sns.distplot(d7, kde=False, color="b", ax=axes[1, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e7, kde=False, color="r", ax=axes[1, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(d8, kde=False, color="b", ax=axes[2, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e8, kde=False, color="r", ax=axes[2, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(d1, kde=False, color="b", ax=axes[3, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e1, kde=False, color="r", ax=axes[3, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(d9, kde=False, color="b", ax=axes[4, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e9, kde=False, color="r", ax=axes[4, 1],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[4,1].set_xlabel('Jaccard')
-sns.distplot(d10, kde=False, color="b", ax=axes[2, 2],bins=b)
-sns.distplot(e10, kde=False, color="r", ax=axes[2, 2],bins=b)
-sns.distplot(d11, kde=False, color="b", ax=axes[3, 2],bins=b)
-sns.distplot(e11, kde=False, color="r", ax=axes[3, 2],bins=b)
-sns.distplot(d12, kde=False, color="b", ax=axes[4, 2],bins=b)
-sns.distplot(e12, kde=False, color="r", ax=axes[4, 2],bins=b)
+sns.distplot(d10, kde=False, color="b", ax=axes[2, 2],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e10, kde=False, color="r", ax=axes[2, 2],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(d11, kde=False, color="b", ax=axes[3, 2],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e11, kde=False, color="r", ax=axes[3, 2],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(d12, kde=False, color="b", ax=axes[4, 2],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e12, kde=False, color="r", ax=axes[4, 2],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[4,2].set_xlabel('Cosine')
-sns.distplot(d13, kde=False, color="b", ax=axes[3, 3],bins=b)
-sns.distplot(e13, kde=False, color="r", ax=axes[3, 3],bins=b)
-sns.distplot(d14, kde=False, color="b", ax=axes[4, 3],bins=b)
-sns.distplot(e14, kde=False, color="r", ax=axes[4, 3],bins=b)
+sns.distplot(d13, kde=False, color="b", ax=axes[3, 3],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e13, kde=False, color="r", ax=axes[3, 3],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(d14, kde=False, color="b", ax=axes[4, 3],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e14, kde=False, color="r", ax=axes[4, 3],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[4,3].set_xlabel('GED')
-sns.distplot(d15, kde=False, color="b", ax=axes[4, 4],bins=b)
-sns.distplot(e15, kde=False, color="r", ax=axes[4, 4],bins=b)
+sns.distplot(d15, kde=False, color="b", ax=axes[4, 4],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
+sns.distplot(e15, kde=False, color="r", ax=axes[4, 4],bins=b, hist_kws=dict(edgecolor="k", linewidth=0.25))
 axes[4,4].set_xlabel('Spectral')
 for i in range(5):
     for j in range(5):
@@ -163,5 +163,6 @@ plt.subplots_adjust(left=0.1,bottom=0.15)
 f.text(0.5,0.02, "Number of Overlapping Systems", ha="center", va="center")
 f.text(0.015,0.5, "Frequency", ha="center", va="center", rotation=90)
 plt.legend(["Most Similar","Least Similar"],bbox_to_anchor=(1, 6.6), loc='upper right')
+plt.setp(axes, xlim=(0,6), xticks=[0,2,4,6], xticklabels=[0,2,4,6])
 plt.show()
-f.savefig('RankOverlap.pdf', dpi=300)
+#f.savefig('RankOverlapV3.pdf', dpi=300)

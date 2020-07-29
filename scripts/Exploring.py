@@ -12,9 +12,9 @@ weaverdata = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_functionsa
 hamming_sim_full = pd.DataFrame(squareform(pdist(data, metric='hamming')), columns = data.index, index = data.index)
 jaccard_sim_full = pd.DataFrame(squareform(pdist(data, metric='jaccard')), columns = data.index, index = data.index)
 cosine_sim_full = pd.DataFrame(squareform(pdist(data, metric='cosine')), columns = data.index, index = data.index)
-networkdata = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_lambdadistance.csv',index_col=0, header=0)
-networkdata_ged = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_geddistance.csv',index_col=0, header=0)
-networkdata_deltacon = pd.read_csv(r'C:\Users\nandy\Downloads\energy_harvesters_deltacon.csv',index_col=0, header=0)
+networkdata = pd.read_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_lambdadistance_sorted.csv',index_col=0, header=0)
+networkdata_ged = pd.read_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_geddistance_sorted.csv',index_col=0, header=0)
+networkdata_deltacon = pd.read_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_deltacon_sorted.csv',index_col=0, header=0)
 
 ##Range normalize and convert distances to similarity
 hamming_sim_full_norm = 1 - (hamming_sim_full - hamming_sim_full.min().min())/(hamming_sim_full.max().max() - hamming_sim_full.min().min())
@@ -25,8 +25,8 @@ ged_norm = 1 - ((networkdata_ged - networkdata_ged.min().min())/(networkdata_ged
 deltacon_norm = 1 - ((networkdata_deltacon - networkdata_deltacon.min().min())/(networkdata_deltacon.max().max() - networkdata_deltacon.min().min()))
 
 ##Getting function diversity for devices
-function_diff = pd.DataFrame(abs(np.subtract.outer(np.sum(weaverdata.iloc[:,0:21], axis=1),np.sum(weaverdata.iloc[:,0:21], axis=1))), columns=weaverdata.index, index=weaverdata.index)
-print(function_diff)
+#function_diff = pd.DataFrame(abs(np.subtract.outer(np.sum(weaverdata.iloc[:,0:21], axis=1),np.sum(weaverdata.iloc[:,0:21], axis=1))), columns=weaverdata.index, index=weaverdata.index)
+#print(function_diff)
 
 ##Get upper triangle with no diagonal
 def triu_nodiag(df):
@@ -42,13 +42,19 @@ def triu_nodiag(df):
     return final
 
 ##Looking at function diversity and similarity score
-plt.scatter(triu_nodiag(function_diff),triu_nodiag(ged_norm))
-plt.scatter(triu_nodiag(function_diff),triu_nodiag(lambdadist_norm), marker='^')
-plt.scatter(triu_nodiag(function_diff),triu_nodiag(deltacon_norm), marker='s')
-plt.scatter(triu_nodiag(function_diff),triu_nodiag(jaccard_sim_full_norm), marker='D')
-plt.xlabel('Difference in Number of Functions')
-plt.ylabel('Similarity Score')
-plt.show()
+#complexitydiffvec = pd.DataFrame(data={'funcdiff':triu_nodiag(function_diff), 'smc':triu_nodiag(hamming_sim_full_norm), 'jaccard':triu_nodiag(jaccard_sim_full_norm), 'cos':triu_nodiag(cosine_sim_full_norm)})
+#complexitydiffnet = pd.DataFrame(data={'funcdiff':triu_nodiag(function_diff), 'ged':triu_nodiag(ged_norm), 'spectral':triu_nodiag(lambdadist_norm), 'dc':triu_nodiag(deltacon_norm)})
+#complexitydiffnet = pd.melt(complexitydiffnet, id_vars =['funcdiff'], value_vars =['ged','spectral','dc'])
+#complexitydiffvec = pd.melt(complexitydiffvec, id_vars =['funcdiff'], value_vars =['smc','jaccard','cos'])
+#sns.boxplot(x='funcdiff',y='value',hue='variable',data=complexitydiffnet)
+#sns.boxplot(x='funcdiff',y='value',hue='variable',data=complexitydiffvec)
+#plt.scatter(triu_nodiag(function_diff),triu_nodiag(ged_norm))
+#plt.scatter(triu_nodiag(function_diff),triu_nodiag(lambdadist_norm), marker='^')
+#plt.scatter(triu_nodiag(function_diff),triu_nodiag(deltacon_norm), marker='s')
+#plt.scatter(triu_nodiag(function_diff),triu_nodiag(jaccard_sim_full_norm), marker='D')
+#plt.xlabel('Difference in Number of Functions')
+#plt.ylabel('Similarity Score')
+#plt.show()
 
 ##Mean of each domain
 def domainmean(df):

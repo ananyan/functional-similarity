@@ -19,6 +19,10 @@ cosinedist = pdist(data, metric='cosine')
 hamming_dist_full = pd.DataFrame(squareform(hammingdist), columns = data.index, index = data.index)
 jaccard_dist_full = pd.DataFrame(squareform(jaccarddist), columns = data.index, index = data.index)
 cosine_dist_full = pd.DataFrame(squareform(cosinedist), columns = data.index, index = data.index)
+#hamming_dist_full.to_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_hammingdist.csv')
+#jaccard_dist_full.to_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_jaccarddist.csv')
+#cosine_dist_full.to_csv(r'C:\Users\nandy\source\repos\FunctionalModelSimilarity\FunctionalModelSimilarity\data\03_processed\energy_harvesters_cosinedist.csv')
+
 
 
 ##Load network distance data
